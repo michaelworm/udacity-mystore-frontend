@@ -3,11 +3,11 @@ import {Product} from "../../interfaces/product"
 import {CartService} from "../../services/cart/cart.service"
 
 @Component({
-  selector: "app-product-item",
-  templateUrl: "./product-item.component.html",
-  styleUrls: ["./product-item.component.css"]
+  selector: "app-cart-item",
+  templateUrl: "./cart-item.component.html",
+  styleUrls: ["./cart-item.component.css"]
 })
-export class ProductItemComponent {
+export class CartItemComponent {
   @Input() product: Product = {
     id: 0,
     name: "",
@@ -19,7 +19,10 @@ export class ProductItemComponent {
 
   constructor (private cartService: CartService) {
   }
-  addToCart (): void {
-    this.cartService.addProductToCart(this.quantity, this.product)
+  updateQuantity(): void {
+    this.cartService.updateQuantityOfProduct(this.quantity, this.product)
+  }
+  removeFromCart (): void {
+    this.cartService.removeProductFromCart(this.product)
   }
 }

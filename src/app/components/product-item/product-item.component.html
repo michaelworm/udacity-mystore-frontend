@@ -4,4 +4,9 @@
   <div>{{product.name}}</div>
   <p>{{product.price}} &euro;</p>
   <p>{{product.description}}</p>
+
+  <form (ngSubmit)="addToCart()" #form="ngForm">
+    <input type="number" name="quantity" [(ngModel)]="quantity" min="1">
+    <button type="submit" [disabled]="form.invalid || !quantity">Add to cart</button>
+  </form>
 </div>

@@ -1,13 +1,15 @@
 import {NgModule} from "@angular/core"
 import {BrowserModule} from "@angular/platform-browser"
 import {HttpClientModule} from "@angular/common/http"
+import {FormsModule} from "@angular/forms"
 
+import {AppRoutingModule} from "./app-routing.module"
 import {AppComponent} from "./app.component"
+import {HeaderComponent} from "./layout/header/header.component"
 import {ProductListComponent} from "./components/product-list/product-list.component"
 import {ProductItemComponent} from "./components/product-item/product-item.component"
-import {HeaderComponent} from "./layout/header/header.component"
-import {AppRoutingModule} from "./app-routing.module"
-import {CartComponent} from "./components/cart/cart.component"
+import {CartComponent} from "./components/cart/cart.component";
+import { CartItemComponent } from './components/cart-item/cart-item.component'
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import {CartComponent} from "./components/cart/cart.component"
     ProductListComponent,
     ProductItemComponent,
     HeaderComponent,
-    CartComponent
+    CartComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
