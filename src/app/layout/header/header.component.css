@@ -8,3 +8,13 @@
 a {
   color: #ffffff;
 }
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav a {
+  margin: 0 0.5rem;
+}
