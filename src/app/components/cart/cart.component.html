@@ -1,6 +1,6 @@
 <div class="cart-container">
   <div class="" *ngIf="cart.length > 0">
-    <app-cart-item *ngFor="let product of cart" [product]="product"></app-cart-item>
+    <app-cart-item *ngFor="let product of cart" [product]="product" (removeFromCartClicked)="removeItemFromCart($event)"></app-cart-item>
   </div>
   <div class="empty-cart-message" *ngIf="cart.length === 0">
     This cart is empty! Try adding products from the <a routerLink="">Product List</a>.

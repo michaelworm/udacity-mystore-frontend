@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core"
+import {Component, EventEmitter, Input, Output} from "@angular/core"
 import {Product} from "../../interfaces/product"
 import {CartService} from "../../services/cart/cart.service"
 
@@ -15,14 +15,15 @@ export class CartItemComponent {
     url: "",
     description: ""
   }
+  @Output() removeFromCartClicked: EventEmitter<Product> = new EventEmitter<Product>()
   quantity = 1
 
   constructor (private cartService: CartService) {
   }
-  updateQuantity(): void {
+  updateQuantity (): void {
     this.cartService.updateQuantityOfProduct(this.quantity, this.product)
   }
   removeFromCart (): void {
-    this.cartService.removeProductFromCart(this.product)
+    this.removeFromCartClicked.emit(this.product)
   }
 }

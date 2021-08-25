@@ -31,6 +31,5 @@ export class CartService {
 
       return cartProduct
     })
-    console.log(this.cart)
   }
 }
