@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from "@angular/core"
-import {Product} from "../../interfaces/product"
-import {CartService} from "../../services/cart/cart.service"
+import {EmptyProduct, Product} from "../../interfaces/product"
+import {UpdateQuantityData} from "../../interfaces/cart"
 
 @Component({
   selector: "app-cart-item",
@@ -8,22 +8,20 @@ import {CartService} from "../../services/cart/cart.service"
   styleUrls: ["./cart-item.component.css"]
 })
 export class CartItemComponent {
-  @Input() product: Product = {
-    id: 0,
-    name: "",
-    price: 0,
-    url: "",
-    description: ""
-  }
-  @Output() removeFromCartClicked: EventEmitter<Product> = new EventEmitter<Product>()
+  @Input() product: Product = EmptyProduct
+  @Output() removeFromCartClicked: EventEmitter<number> = new EventEmitter<number>()
+  @Output() updateQuantityClicked: EventEmitter<UpdateQuantityData> = new EventEmitter<UpdateQuantityData>()
   quantity = 1
 
-  constructor (private cartService: CartService) {
+  constructor () {
   }
   updateQuantity (): void {
-    this.cartService.updateQuantityOfProduct(this.quantity, this.product)
+    this.updateQuantityClicked.emit({
+      quantity: this.quantity,
+      productId: this.product.id
+    })
   }
   removeFromCart (): void {
-    this.removeFromCartClicked.emit(this.product)
+    this.removeFromCartClicked.emit(this.product.id)
   }
 }

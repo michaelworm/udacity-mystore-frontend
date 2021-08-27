@@ -8,15 +8,7 @@ export class CartService {
   cart: Array<CartProduct> = []
 
   getCart (): Array<CartProduct> {
-    return [{
-      id: 1,
-      name: "Book",
-      price: 9.99,
-      url: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      description: "You can read it!",
-      quantity: 3
-    }]
-    //return this.cart
+    return this.cart
   }
   addProductToCart (quantity: number, product: Product): void {
     this.cart.push({
@@ -26,18 +18,27 @@ export class CartService {
 
     alert("Added to cart!")
   }
-  removeProductFromCart (product: Product): void {
-    this.cart = this.cart.filter(({id}) => id !== product.id)
+  removeProductFromCart (productId: number): void {
+    this.cart = this.cart.filter(({id}) => id !== productId)
 
     alert("Removed from cart!")
   }
-  updateQuantityOfProduct (quantity: number, product: Product): void {
+  updateQuantityOfProduct (quantity: number, productId: number): void {
     this.cart = this.cart.map((cartProduct) => {
-      if (cartProduct.id === product.id) {
+      if (cartProduct.id === productId) {
         cartProduct.quantity = quantity
       }
 
       return cartProduct
     })
+  }
+  getCartTotal() : number {
+    let total = 0
+
+    this.cart.forEach(({price, quantity}) => {
+      total += price * quantity
+    })
+
+    return total
   }
 }
