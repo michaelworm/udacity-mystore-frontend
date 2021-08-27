@@ -11,10 +11,22 @@ export class CartService {
     return this.cart
   }
   addProductToCart (quantity: number, product: Product): void {
-    this.cart.push({
-      ...product,
-      quantity
-    })
+    const productAlreadyInCart: CartProduct | undefined = this.cart.find(({id}) => id === product.id)
+
+    if (!productAlreadyInCart) {
+      this.cart.push({
+        ...product,
+        quantity
+      })
+    } else {
+      const productAlreadyInCartIndex: number = this.cart.indexOf(productAlreadyInCart)
+      const updatedProduct: CartProduct = {
+        ...productAlreadyInCart,
+        quantity: productAlreadyInCart.quantity + quantity
+      }
+
+      this.cart.splice(productAlreadyInCartIndex, 1, updatedProduct)
+    }
 
     alert("Added to cart!")
   }
@@ -32,7 +44,7 @@ export class CartService {
       return cartProduct
     })
   }
-  getCartTotal() : number {
+  getCartTotal (): number {
     let total = 0
 
     this.cart.forEach(({price, quantity}) => {

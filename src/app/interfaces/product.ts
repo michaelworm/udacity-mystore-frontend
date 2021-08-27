@@ -17,3 +17,12 @@ export const EmptyProduct: Product = {
   url: "",
   description: ""
 }
+
+export const EmptyCartProduct: CartProduct = {
+  id: 0,
+  name: "",
+  price: 0,
+  url: "",
+  description: "",
+  quantity: 1
+}
