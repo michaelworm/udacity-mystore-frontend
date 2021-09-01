@@ -13,8 +13,6 @@ export class CartItemComponent implements OnInit {
   @Output() updateQuantityClicked: EventEmitter<UpdateQuantityData> = new EventEmitter<UpdateQuantityData>()
   quantity = 1
 
-  constructor () {
-  }
   ngOnInit () {
     this.quantity = this.product.quantity
   }

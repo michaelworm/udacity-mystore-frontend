@@ -1,0 +1,11 @@
+.form-margin {
+  margin-bottom: 12px;
+}
+
+label {
+  display: block;
+}
+
+input {
+  width: 100%;
+}

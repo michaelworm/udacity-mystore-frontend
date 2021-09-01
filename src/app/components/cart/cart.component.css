@@ -3,10 +3,6 @@ img {
   border-radius: 10px;
 }
 
-.form-margin {
-  margin-bottom: 12px;
-}
-
 .cart-container {
   display: flex;
   flex-direction: row;

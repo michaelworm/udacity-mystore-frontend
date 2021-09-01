@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core"
 import {CartProduct} from "../../interfaces/product"
-import {UpdateQuantityData} from "../../interfaces/cart"
+import {Customer, EmptyCustomer, UpdateQuantityData} from "../../interfaces/cart"
 import {CartService} from "../../services/cart/cart.service"
 
 @Component({
@@ -11,9 +11,9 @@ import {CartService} from "../../services/cart/cart.service"
 export class CartComponent implements OnInit {
   cart: Array<CartProduct> = []
   total: number = 0
+  customer: Customer = EmptyCustomer
 
   constructor (private cartService: CartService) {
-
   }
   ngOnInit (): void {
     this.loadCart()
@@ -33,5 +33,9 @@ export class CartComponent implements OnInit {
   }
   setCartTotal () {
     this.total = this.cartService.getCartTotal()
+  }
+  registeredCustomer (customer: Customer) {
+    console.log(customer)
+    this.customer = customer
   }
 }
