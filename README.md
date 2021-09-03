@@ -1,6 +1,10 @@
 # UdacityMystoreFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.1.
+MyStore is a simple e-commerce application which is built with Angular. 
+The user is able to see all products from data.json in a listing view, can add
+products to the cart, read details on a product on a detail view and can update 
+the cart to remove products or update quantity on the cart view. When successfully
+registering with valid personal data in the cart, a success view is shown.
 
 ## Development server
 
