@@ -12,6 +12,7 @@ export class CartComponent implements OnInit {
   cart: Array<CartProduct> = []
   total: number = 0
   customer: Customer = EmptyCustomer
+  success: boolean = false
 
   constructor (private cartService: CartService) {
   }
@@ -35,7 +36,8 @@ export class CartComponent implements OnInit {
     this.total = this.cartService.getCartTotal()
   }
   registeredCustomer (customer: Customer) {
-    console.log(customer)
     this.customer = customer
+
+    this.success = true
   }
 }

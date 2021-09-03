@@ -25,3 +25,8 @@ img {
   display: inline-block;
   margin-left: 5px;
 }
+
+.success-container {
+  margin: 0 auto;
+  width: 300px;
+}

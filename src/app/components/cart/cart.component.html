@@ -1,4 +1,4 @@
-<div class="cart-container">
+<div class="cart-container" *ngIf="!success">
   <div class="cart-panel" *ngIf="cart.length > 0">
     <app-cart-item
       *ngFor="let product of cart"
@@ -16,4 +16,11 @@
   <div class="empty-cart-message" *ngIf="cart.length === 0">
     This cart is empty! Try adding products from the <a routerLink="">Product List</a>.
   </div>
+</div>
+<div class="success-container" *ngIf="success">
+  <h1>Success!</h1>
+  <p>Thank you for ordering {{customer.fullName}}!</p>
+  <p>Your {{total}} order is confirmed!</p>
+  <p>Please allow 1-3 business day(s) for shipping.</p>
+  <a routerLink="">Back to product list</a>
 </div>
